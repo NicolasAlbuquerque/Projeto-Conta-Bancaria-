@@ -68,9 +68,9 @@ public class Conta {
 		case 2 -> tipo="Conta Corrente";
 		}
 		
-		System.out.println("|------------------------------------------|");
-		System.out.println("|--------------Dados da Conta--------------|");
-		System.out.println("|------------------------------------------|");
+			System.out.println("|------------------------------------------|");
+			System.out.println("|--------------Dados da Conta--------------|");
+			System.out.println("|------------------------------------------|");
 		System.out.println("numero da Conta"+ this.numero);
 		System.out.println("Agencia  da Conta "+ this.agencia);
 		System.out.println("Tipo da Conta "+ tipo);
