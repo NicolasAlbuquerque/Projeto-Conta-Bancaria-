@@ -8,7 +8,7 @@ public class ContaCorrente extends Conta{
 
 	public ContaCorrente(int numero, int agencia, int tipo, String titular, float saldo, float limite) {
 		super(numero, agencia, tipo, titular, saldo);
-		this.limite= this.limite;
+		this.limite= limite;
 
 	}
 	public float getLimite() {
@@ -33,7 +33,7 @@ public class ContaCorrente extends Conta{
 
 	public void visualizar(){
 	super.visualizar();
-		System.out.println("Limite de Credito"+ this.limite);
+		System.out.println("Limite de Credito: "+ this.limite);
 	}
 
 }

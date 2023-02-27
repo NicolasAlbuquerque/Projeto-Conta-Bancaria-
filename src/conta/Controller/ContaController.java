@@ -6,7 +6,7 @@ import conta.model.Conta;
 import java.util.ArrayList;
 
 public class ContaController implements ContaRepository {
-
+         int numero=0;
         private ArrayList<Conta> listaConta=new ArrayList<Conta>();
 
     @Override
@@ -56,21 +56,49 @@ public class ContaController implements ContaRepository {
 
     @Override
     public void sacar(int numero, float valor) {
+        var conta = buscarNaCollection(numero);
+        if (conta != null){
+            if (conta.sacar(valor) == true) ;
+        System.out.println("Saque realizado com Sucesso ");
+    }else
+            System.out.println("A conta numero: "+ numero + " não foi encontrado");
 
     }
 
+
     @Override
     public void depositar(int numero, float valor) {
+        var conta = buscarNaCollection(numero);
+        if (conta != null){
+            conta.depositar(valor);
+            System.out.println("Saque realizado com Sucesso ");
+        }else
+            System.out.println("A conta numero: "+ numero + " não foi encontrado");
 
     }
 
     @Override
     public void transferir(int numero, int numeroDestino, float valor) {
+        var contaOrigem = buscarNaCollection(numero);
+        var contaDestino = buscarNaCollection(numeroDestino);
+        if (contaOrigem != null && contaDestino != null){
+            if(contaOrigem.sacar(valor)==true)
+              contaDestino.depositar(valor);
+              System.out.println("Deposito efetuada com Sucesso ");
+        }else
+            System.out.println("A conta de Origem e/ou Destino não foram encontradas");
+
 
     }
     public int gerarNumero(){
-        return listaConta.size()+1;
-    }
+      /*  if (listaConta.size()==0){
+            return numero;
+        }else{
+            numero ++;*/
+            return  ++ numero ;
+        }
+
+   // }
 
         public Conta buscarNaCollection(int numero){
             for(var conta :listaConta){

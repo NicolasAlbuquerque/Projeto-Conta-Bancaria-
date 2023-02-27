@@ -25,7 +25,7 @@ public class Menu {
 
 		System.out.println("\nCriar Contas\n");
 
-		var cc1 = new ContaCorrente(contas.gerarNumero(), 123, 1, "João da Silva", 1000f, 100.0f);
+		var cc1 = new ContaCorrente(contas.gerarNumero(), 123, 1, "João da Silva", 1000f, 10000f);
 		contas.cadastrar(cc1);
 
 		ContaCorrente cc2 = new ContaCorrente(contas.gerarNumero(), 124, 1, "Maria da Silva", 2000f, 100.0f);
@@ -86,11 +86,10 @@ public class Menu {
 
 		while (true) {
 
-			System.out.println(Cores.TEXT_YELLOW + Cores.ANSI_BLACK_BACKGROUND + " ------------------------------------------------------");
+			System.out.println( " ------------------------------------------------------");
 			System.out.println(" ------------------------------------------------------");
 			System.out.println("|                FUCK THE CAPITALISM BANK              |");
 			System.out.println(" ------------------------------------------------------");
-			System.out.println(Cores.TEXT_WHITE + Cores.ANSI_BLACK_BACKGROUND + "                                                     ");
 			System.out.println("|            1 - Criar Conta                           |");
 			System.out.println("|            2 - Listar todas as Contas                |");
 			System.out.println("|            3 - Buscar Conta por Numero               |");
@@ -217,19 +216,20 @@ public class Menu {
 					System.out.println("Digite o Número da Conta que deseja apagar: ");
 					numero= leia.nextInt();
 						contas.deletar(numero);// Chamada para o Método Deletar
-					
+
 					keyPress();
 					break;
 				case 6:
 					System.out.println("Saque\n\n");
+
+
 
 					System.out.println("Número da Conta: ");
 					numero = leia.nextInt();
 
 					System.out.println("Valor do Saque: ");
 					valor = leia.nextFloat();
-
-					// Chamada para o Método Sacar
+					contas.sacar(numero,valor);// Chamada para o Método Sacar
 
 					keyPress();
 					break;
@@ -242,7 +242,7 @@ public class Menu {
 					System.out.println("Valor do Depósito: ");
 					valor = leia.nextFloat();
 
-					// Chamada para o Método Depositar
+					contas.depositar(numero,valor);// Chamada para o Método Depositar
 
 					keyPress();
 					break;
@@ -259,6 +259,7 @@ public class Menu {
 					valor = leia.nextFloat();
 
 					// Chamada para o Método Transferir
+					contas.transferir(numero, numeroDestino,valor);
 
 					keyPress();
 					break;
